@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ngo Nhat Nguyen | Portfolio</title>
+    <!-- Meta Tags -->
+    <title data-i18n-key="page_title">Ngo Nhat Nguyen | Portfolio</title>
+    <meta property="og:description" data-i18n-key="meta_description" content="Sinh viên HCMUS với khát vọng MIT. Khám phá các dự án và hành trình của mình.">
+    
+    <!-- Thẻ Favicon động -->
+    <link id="favicon" rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%2300ff41%22/></svg>">
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- THANH ĐIỀU HƯỚNG TRÊN CÙNG (TOP NAVIGATION BAR) -->
+    <nav id="top-nav" class="hidden">
+        <div class="top-nav-content">
+            <a href="#home" class="top-nav-logo">Ngo Nhat Nguyen</a>
+            <ul>
+                <li><a href="#about" data-i18n-key="nav_about">About</a></li>
+                <li><a href="#journey" data-i18n-key="nav_journey">Journey</a></li>
+                <li><a href="#skills" data-i18n-key="nav_skills">Skills</a></li>
+                <li><a href="#projects" data-i18n-key="nav_projects">Projects</a></li>
+                <li><a href="#writings" data-i18n-key="nav_writings">Writings</a></li>
+                <li><a href="#bookshelf" data-i18n-key="nav_bookshelf">Bookshelf</a></li>
+                <li><a href="#contact" data-i18n-key="nav_contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HIỆU ỨNG TẢI TRANG (PRE-LOADER) -->
+    <div id="preloader">
+        <div class="preloader-content-wrapper">
+            <!-- LOG OUTPUT -->
+            <div id="preloader-log-output"></div>
+            <!-- TEXT -->
+            <div class="preloader-text">[ Booting System...<span class="preloader-cursor"></span> ]</div>
+            <!-- PROGRESS BAR -->
+            <div class="preloader-progress-bar">
+                <div class="preloader-progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CON TRỎ CHUỘT TÙY CHỈNH -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-circle"></div>
+
+    <!-- CANVAS CHO BACKGROUND 3D -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- ĐIỀU HƯỚNG CHẤM TRÒN -->
+    <nav class="page-nav">
+        <ul></ul>
+    </nav>
+    
+    <!-- CONTAINER CHÍNH -->
+    <div class="fullpage-container">
+    <!-- PAGE: HOME -->
+        <section class="page" id="home">
+            <div class="settings-menu-container"> 
+                <button id="settings-button" class="settings-icon-button" aria-label="Settings">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0-.33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1.51-1V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                </button>
+                <div id="settings-panel" class="settings-panel">
+                    <!-- Hàng 1: Dark/Light Mode -->
+                    <div class="settings-option">
+                        <span class="setting-label" data-i18n-key="settings_theme">Dark/Light Mode</span>
+                        <label class="theme-switch" for="theme-toggle">
+                            <input type="checkbox" id="theme-toggle" />
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <!-- Hàng 2: Disable Background -->
+                    <div class="settings-option">
+                        <span class="setting-label" data-i18n-key="settings_background">Disable Background</span>>
+                        <label class="theme-switch" for="bg-toggle">
+                            <input type="checkbox" id="bg-toggle" checked />
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <!-- Hàng 3: Language -->
+                    <div class="settings-option">
+                        <span class="setting-label" data-i18n-key="settings_language">Language</span>
+                        <div class="language-selector">
+                            <button class="lang-btn active" data-lang="vi">VI</button>
+                            <button class="lang-btn" data-lang="en">ENG</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page-content">
+                <div id="typing-container"><span id="typing-text"></span><span class="cursor"></span></div>
+                <p class="tagline" data-i18n-key="home_tagline">Aspiring MIT Engineer, crafting digital experiences from HCMUS.</p>
+                <a href="#projects" class="cta-button" data-i18n-key="home_cta_view_work">> View My Work</a>
+                <a href="assets/my-resume.pdf" download="[Tên_Của_Bạn]_Resume.pdf" class="cta-button secondary-cta-button" data-i18n-key="home_cta_download_resume">Download Resume</a>
+            </div>
+        </section>
+        <!-- PAGE: ABOUT -->
+        <section class="page" id="about">
+             <div class="page-content about-layout">
+                <div class="about-photo"><img src="assets/images/creator_avatar.jpg" alt="Ảnh chân dung của bạn"></div>
+                <div class="about-text">
+                    <h2 data-i18n-key="about_title">// About Me</h2>
+                    <p data-i18n-key="about_p1">Chào bạn, mình là Ngô Nhật Nguyên, sớm sẽ là tân sinh viên của ngành Kĩ thuật Viễn thông tại HCMUS. Sở thích của mình là làm việc trong lĩnh vực công nghệ liên quan đến AI và Robotics.</p>
+                    <p data-i18n-key="about_p2">Mục tiêu lớn nhất của mình là được học tập và nghiên cứu tại MIT - nơi hội tụ những bộ óc xuất sắc nhất thế giới để giải quyết những vấn đề toàn cầu.</p>
+                </div>
+            </div>
+        </section>
+        <!-- PAGE: GITHUB ACTIVITY -->
+        <section class="page" id="activity">
+            <div class="page-content">
+                <h2 data-i18n-key="activity_title">// Latest Code Commits</h2>
+                <p class="philosophy" data-i18n-key="activity_philosophy">Một cái nhìn trực tiếp vào những gì mình đang xây dựng và học hỏi hàng ngày.</p>
+                <div id="github-activity-container"><div class="activity-item loading"><div class="dot-flashing"></div><p>Fetching latest commits from GitHub...</p></div></div>
+                <a href="https://github.com/NhatNguyenYn" target="_blank" class="github-link" data-i18n-key="activity_view_all">View All on GitHub →</a>
+            </div>
+        </section>
+        <!-- PAGE: JOURNEY -->
+        <section class="page" id="journey">
+            <div class="page-content"> <!-- THÊM LẠI WRAPPER NÀY -->
+                <h2 data-i18n-key="journey_title">// Academic Journey</h2> <!-- ĐƯA H2 RA NGOÀI -->
+                <div class="timeline">
+                    <!-- Item 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title" data-i18n-key="timeline1_title">Trường THPT Trần Văn Giàu</h3>
+                            <p class="timeline-date" data-i18n-key="timeline1_date">2022 - 2025</p>
+                            <ul class="timeline-details">
+                                <li data-i18n-key="timeline1_item1">Thành viên đội tuyển HSG Tin học, Vật lý.</li>
+                                <li data-i18n-key="timeline1_item2">Giải Nhất hội thi Tin học trẻ cấp Quận.</li>
+                                <li data-i18n-key="timeline1_item3">GPA: Toán 9.4, Lý 9.4, Tin 10.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title" data-i18n-key="timeline2_title">Đại học Khoa học Tự nhiên - ĐHQG-HCM</h3>
+                            <p class="timeline-date" data-i18n-key="timeline2_date">2025 - Hiện tại</p>
+                            <ul class="timeline-details">
+                                <li data-i18n-key="timeline2_item1">Ngành học: Kĩ thuật Viễn thông.</li>
+                                <li data-i18n-key="timeline2_item2">Lĩnh vực quan tâm: AI, Thuật toán, Robotics.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title" data-i18n-key="timeline3_title">Massachusetts Institute of Technology (MIT)</h3>
+                            <p class="timeline-date" data-i18n-key="timeline3_date">Mục tiêu tương lai</p>
+                            <ul class="timeline-details">
+                                <li data-i18n-key="timeline3_item1">Theo đuổi chương trình Master/PhD tại CSAIL.</li>
+                                <li data-i18n-key="timeline3_item2">Khát vọng đóng góp vào lĩnh vực Trí tuệ Nhân tạo & Robotics.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>       
+        <!-- PAGE: SKILLS -->
+        <section class="page" id="skills">
+            <div class="page-content">
+                <h2 data-i18n-key="skills_title">// My Skillset</h2>
+                <p class="philosophy" data-i18n-key="skills_philosophy">"I believe in writing clean, maintainable code and always putting the user experience first."</p>
+                <canvas id="skills-chart"></canvas>
+            </div>
+        </section>
+<!-- PAGE: PROJECTS -->
+        <section class="page" id="projects">
+            <div class="page-content">
+                <h2 data-i18n-key="projects_title">// Featured Projects</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="js">JavaScript</button>
+                    <button class="filter-btn" data-filter="css">CSS</button>
+                    <button class="filter-btn" data-filter="api">API</button>
+                    <button class="filter-btn" data-filter="python">Python</button>
+                </div>
+
+                <div class="project-grid">
+                    <!-- Dự án 1: QR ATTEND -->
+                    <div class="project-card" data-category="python"> <!-- Đổi category thành python -->
+                        <div class="project-card-inner">
+                            <div class="project-card-front">
+                                <img src="assets/projects-images/project1.jpg" alt="QR Attend Screenshot" loading="lazy"> <!-- Đã cập nhật src và alt -->
+                                <h3>QR Attend</h3> <!-- Đã cập nhật tiêu đề -->
+                            </div>
+                            <div class="project-card-back">
+                                <h4>QR Attend</h4> <!-- Đã cập nhật tiêu đề -->
+                                <p>Mô tả chi tiết: The software was written by me for the purpose of participating in the 2025 city-level youth informatics competition. This is a software for classifying students + taking attendance by QR code and many other functions...</p>
+                                <div class="project-tags">
+                                    <span>Python</span>
+                                    <span>Tkinter</span>
+                                    <span>OpenCV</span>
+                                    <span>Pillow</span>
+                                    <span>JSON</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/NhatNguyenYn/Young-computer-science-2025-HCM" target="_blank">Demo</a>
+                                    <a href="https://github.com/NhatNguyenYn/Young-computer-science-2025-HCM" target="_blank">Code</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dự án 2: Caro Deluxe -->
+                    <div class="project-card" data-category="python"> <!-- Đổi category thành python -->
+                        <div class="project-card-inner">
+                            <div class="project-card-front">
+                                <img src="assets/projects-images/project2.jpg" alt="Caro Deluxe Screenshot" loading="lazy"> <!-- Đã cập nhật src và alt -->
+                                <h3>Caro Deluxe</h3> <!-- Đã cập nhật tiêu đề -->
+                            </div>
+                            <div class="project-card-back">
+                                <h4>Caro Deluxe</h4> <!-- Đã cập nhật tiêu đề -->
+                                <p>Mô tả chi tiết: A polished Caro (Gomoku) game built with Pygame, featuring a powerful Minimax AI, a post-game analysis tool, and save/load functionality.</p>
+                                <div class="project-tags">
+                                    <span>Python</span>
+                                    <span>Pygame</span>
+                                    <span>JSON</span>
+                                    <span>Object-Oriented Design</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/NhatNguyenYn/Caro-Deluxe-1.0-with-AI-insane-mode" target="_blank">Demo</a>
+                                    <a href="https://github.com/NhatNguyenYn/Caro-Deluxe-1.0-with-AI-insane-mode" target="_blank">Code</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dự án 3: Rock Paper Scissors AI -->
+                    <div class="project-card" data-category="python js css"> <!-- Cập nhật category -->
+                        <div class="project-card-inner">
+                            <div class="project-card-front">
+                                <img src="assets/projects-images/project3.jpg" alt="Rock Paper Scissors AI Screenshot" loading="lazy"> <!-- Đã cập nhật src và alt -->
+                                <h3>AI Rock Paper Scissors</h3> <!-- Đã cập nhật tiêu đề -->
+                            </div>
+                            <div class="project-card-back">
+                                <h4>AI Rock Paper Scissors</h4> <!-- Đã cập nhật tiêu đề -->
+                                <p>Mô tả chi tiết: Rock Paper Scissors AI Webcam is an interactive AI-powered game that brings the classic hand game to life using real-time hand gesture recognition and voice commands.This project was built to explore and combine modern technologies like computer vision, real-time media streaming, and natural interfaces into an engaging web experience.</p>
+                                <div class="project-tags">
+                                    <span>Python</span>
+                                    <span>Flask</span>
+                                    <span>OpenCV</span>
+                                    <span>MediaPipe</span>
+                                    <span>HTML5</span>
+                                    <span>CSS3</span>
+                                    <span>JavaScript</span>
+                                    <span>SpeechRecognition</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/NhatNguyenYn/Rock-Paper-Scissors-AI" target="_blank">Demo</a>
+                                    <a href="https://github.com/NhatNguyenYn/Rock-Paper-Scissors-AI" target="_blank">Code</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dự án 4: Gesture Control Framework -->
+                    <div class="project-card" data-category="python"> <!-- Đổi category thành python -->
+                        <div class="project-card-inner">
+                            <div class="project-card-front">
+                                <img src="assets/projects-images/project4.jpg" alt="Gesture Control Framework Screenshot" loading="lazy"> <!-- Đã cập nhật src và alt -->
+                                <h3>Air-Pen</h3> <!-- Đã cập nhật tiêu đề -->
+                            </div>
+                            <div class="project-card-back">
+                                <h4>Air-Pen</h4> <!-- Đã cập nhật tiêu đề -->
+                                <p>Mô tả chi tiết: Gesture Control Framework is an advanced HCI project that turns a standard webcam into a gesture-based PC controller. Built with Python, OpenCV, and MediaPipe, it includes modules like a Virtual Painter, Virtual Mouse, and Volume Control — all operable via hand gestures.</p>
+                                <div class="project-tags">
+                                    <span>Python</span>
+                                    <span>OpenCV</span>
+                                    <span>MediaPipe</span>
+                                    <span>PyAutoGUI</span>
+                                    <span>PyCAW</span>
+                                    <span>Tkinter</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/NhatNguyenYn/Gesture-Air-Control-Framework-V1" target="_blank">Demo</a>
+                                    <a href="https://github.com/NhatNguyenYn/Gesture-Air-Control-Framework-V1" target="_blank">Code</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dự án Python Placeholder (giữ nguyên để bạn điền vào sau) -->
+                    <div class="project-card" data-category="python">
+                        <div class="project-card-inner">
+                            <div class="project-card-front">
+                                <img src="#" alt="Python Project Screenshot">
+                                <h3>Tên Dự Án Python</h3>
+                            </div>
+                            <div class="project-card-back">
+                                <h4>Tên Dự Án Python</h4>
+                                <p>Mô tả chi tiết dự án Python của bạn. Ví dụ: một script xử lý dữ liệu, một bot đơn giản, v.v.</p>
+                                <div class="project-tags">
+                                    <span>Python</span>
+                                    <span>Data Analysis</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" target="_blank">Live Demo</a>
+                                    <a href="#" target="_blank">Source Code</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- PAGE: WRITINGS -->
+        <section class="page" id="writings">
+            <div class="page-content">
+                <h2 data-i18n-key="writings_title">// Writings & Thoughts</h2>
+                <p class="philosophy" data-i18n-key="writings_philosophy">Nơi mình chia sẻ những gì đã học, những ý tưởng và quá trình giải quyết vấn đề.</p>
+                <div class="writings-grid">
+                    <!-- Writing 1 -->
+                    <a href="posts/why-i-love-algorithms.html" class="writing-card">
+                        <div class="writing-card-content">
+                            <span class="writing-category">Algorithms</span>
+                            <h3 data-i18n-key="writing1_title">Tại Sao Tôi Yêu Thuật Toán</h3>
+                            <p data-i18n-key="writing1_desc">Khám phá vẻ đẹp của việc giải quyết vấn đề...</p>
+                            <span class="read-more" data-i18n-key="writing1_cta">Đọc bài viết →</span>
+                        </div>
+                    </a>
+                    <!-- Writing 2 -->
+                    <a href="posts/first-impressions-of-machine-learning.html" class="writing-card">
+                        <div class="writing-card-content">
+                            <span class="writing-category">Machine Learning</span>
+                            <h3 data-i18n-key="writing2_title">Cảm Nhận Đầu Tiên Về Học Máy</h3>
+                            <p data-i18n-key="writing2_desc">Hành trình của mình qua các khái niệm cơ bản...</p>
+                            <span class="read-more" data-i18n-key="writing2_cta">Đọc bài viết →</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- PAGE: BOOKSHELF -->
+        <section class="page" id="bookshelf">
+            <div class="page-content">
+                <h2 data-i18n-key="bookshelf_title">// Virtual Bookshelf</h2>
+                <p class="philosophy" data-i18n-key="bookshelf_philosophy">Những cuốn sách đã định hình tư duy và truyền cảm hứng cho tôi.</p>
+                <div class="bookshelf-grid">
+                    <div class="book-item"><img src="https://toidicodedao.com/wp-content/uploads/2015/04/the-pragmatic-programmer.jpg?w=640" alt="Book Cover"><div class="book-info"><p class="book-title">The Pragmatic Programmer</p><p class="book-author">A. Hunt, D. Thomas</p></div></div>
+                    <div class="book-item"><img src="https://hanoibookstore.com/storage/clean-code-800x800.jpg" alt="Book Cover"><div class="book-info"><p class="book-title">Clean Code</p><p class="book-author">R. C. Martin</p></div></div>
+                    <div class="book-item"><img src="https://m.media-amazon.com/images/I/71gVwx5HXaL._UF1000,1000_QL80_.jpg" alt="Book Cover"><div class="book-info"><p class="book-title">A World Without Email</p><p class="book-author">Cal Newport</p></div></div>
+                    <div class="book-item"><img src="https://nhasachphuongnam.com/images/detailed/173/51oXKWrcYYL.jpg" alt="Book Cover"><div class="book-info"><p class="book-title">Thinking, Fast and Slow</p><p class="book-author">D. Kahneman</p></div></div>
+                </div>
+            </div>
+        </section>
+        <!-- PAGE: CONTACT -->
+        <section class="page" id="contact">
+            <div class="page-content contact-layout">
+                <h2 data-i18n-key="contact_title">// Get In Touch</h2>
+                <p class="tagline" data-i18n-key="contact_tagline">Mình luôn sẵn sàng kết nối. Hãy liên hệ với mình!</p>
+                <div class="contact-links">
+                    <a href="mailto:nhatnguyen.developer@gmail.com" class="contact-icon-link" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <span data-i18n-key="contact_email">Email</span>
+                    </a>
+                    <a href="https://github.com/NhatNguyenYn" target="_blank" class="contact-icon-link" aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        <span data-i18n-key="contact_github">GitHub</span>
+                    </a>
+                    <a href="#" target="_blank" class="contact-icon-link" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        <span data-i18n-key="contact_linkedin">LinkedIn</span>
+                    </a>
+                    <a href="https://www.facebook.com/ngonhatnguyen2k7.it" target="_blank" class="contact-icon-link" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        <span data-i18n-key="contact_facebook">Facebook</span>
+                    </a>
+                </div>
+                <footer class="page-footer">
+                    <!-- THÊM id="uses-link" và thay đổi href="#" -->
+                    <a href="#" id="uses-link" class="footer-link" data-i18n-key="footer_uses_link">What I Use</a>
+                    <span>•</span> 
+                    <p data-i18n-key="footer_copyright">© 2025 by Ngo Nhat Nguyen (nnYunaXYZ)</p>
+                </footer>
+            </div>
+        </section>
+    </div>
+
+    <!-- GIAO DIỆN DÒNG LỆNH (CLI) ẨN -->
+    <div id="terminal-container" class="hidden">
+        <div id="terminal">
+            <div id="terminal-output"></div>
+            <div class="terminal-prompt"><span class="prompt-user">[nnYunaXYZ@portfolio]</span><span class="prompt-symbol">></span><input type="text" id="terminal-input" autocomplete="off" spellcheck="false"></div>
+        </div>
+    </div>
+    <!-- MODAL CHO BÀI VIẾT BLOG -->
+    <div id="blog-modal" class="hidden">
+        <div class="modal-content">
+            <button class="close-modal-btn">×</button>
+            <div class="modal-body">
+                <!-- Nội dung bài viết sẽ được tải vào đây bằng JS -->
+                <p>Loading...</p>
+            </div>
+        </div>
+    </div>
+    <!-- THƯ VIỆN & SCRIPTS (Sắp xếp lại để đảm bảo thứ tự tải) -->
+    <!-- Thư viện Chart.js (đặt trước script chính vì nó được dùng sớm) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Thư viện Three.js (đặt trước script chính vì nó được dùng sớm) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Script chính của bạn -->
+    <script src="script.js"></script>
+
+</body>
+</html>

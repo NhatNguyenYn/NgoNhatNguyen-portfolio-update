@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n-key="uses_page_title">Uses | Ngo Nhat Nguyen</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS riêng cho trang uses khi hiển thị trong modal */
+        /* Các style này chủ yếu để đảm bảo nó trông giống bài viết blog trong modal */
+        .post-content h1 {
+            font-family: var(--font-main); /* Sử dụng font chính */
+            font-size: 2.5rem; /* Kích thước phù hợp với h1 trong modal */
+            color: var(--tech-green); /* Màu xanh công nghệ */
+            margin-bottom: 1.5rem;
+            text-align: left; /* Căn trái */
+        }
+        .post-meta {
+            color: #888;
+            margin-bottom: 2.5rem; /* Tăng khoảng cách dưới một chút */
+            font-style: italic;
+            font-size: 0.95rem; /* Giữ kích thước nhỏ hơn */
+        }
+        .post-content h2 {
+            font-family: var(--font-main); /* Sử dụng font chính */
+            font-size: 1.8rem; /* Kích thước phù hợp với h2 trong modal */
+            color: var(--text-color); /* Màu chữ chính */
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            text-align: left; /* Căn trái */
+        }
+        .post-content ul {
+            list-style-type: none; /* Bỏ dấu chấm mặc định */
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+        }
+        .post-content li {
+            font-size: 1.05rem; /* Kích thước chữ cho list item */
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+        }
+        .post-content li strong {
+            color: var(--tech-green); /* Nhấn mạnh tên công cụ */
+        }
+    </style>
+</head>
+<body class="post-page light-mode-check">
+    <main class="post-content">
+        <h1 data-i18n-key="uses_h1">// What I Use</h1>
+        <p class="post-meta" data-i18n-key="uses_meta">Một danh sách (gần như) đầy đủ các công cụ và phần mềm tôi tin dùng để làm việc và học tập.</p>
+        
+        <h2 data-i18n-key="uses_h2_editor">Editor & Terminal</h2>
+        <ul>
+            <li><strong>Editor:</strong> Visual Studio Code</li>
+            <li><strong>Theme:</strong> One Dark Pro</li>
+            <li><strong>Font:</strong> Fira Code (với ligatures)</li>
+            <li><strong>Terminal:</strong> Windows Terminal with WSL2 (Ubuntu)</li>
+        </ul>
+
+        <h2 data-i18n-key="uses_h2_hardware">Hardware</h2>
+        <ul>
+            <li><strong>PC:</strong> with Nvidia 1660TI, 16GB Ram, 2T Rom</li>
+            <li data-i18n-key="uses_hardware_item2"><strong>Màn hình:</strong> MSI Gaming MAG 255XF | 300hz, 0,5ms</li>
+            <li data-i18n-key="uses_hardware_item3"><strong>Bàn phím:</strong> Logitech G913 TKL Lightspeed Rgb Mechanical Linear</li>
+            <li data-i18n-key="uses_hardware_item4"><strong>Chuột:</strong> Logitech SuperLight 2</li>
+        </ul>
+
+        <h2 data-i18n-key="uses_h2_software">Software & Productivity</h2>
+        <ul>
+            <li data-i18n-key="uses_software_item1"><strong>Trình duyệt:</strong> Google Chrome & Firefox Developer Edition</li>
+            <li data-i18n-key="uses_software_item2"><strong>Thiết kế UI/UX:</strong> Figma</li>
+            <li data-i18n-key="uses_software_item3"><strong>Ghi chú:</strong> Obsidian / Notion</li>
+            <li data-i18n-key="uses_software_item4"><strong>Quản lý công việc:</strong> Todoist</li>
+        </ul>
+    </main>
+    <script>
+        // Script nhỏ để áp dụng theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+        }
+        // Thêm event listener cho link quay lại trong modal nếu cần (nếu bạn muốn có nút quay lại riêng trong modal)
+        // Hiện tại không cần vì modal có nút đóng
+    </script>
+</body>
+</html>
