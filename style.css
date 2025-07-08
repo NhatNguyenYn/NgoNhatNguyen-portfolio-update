@@ -365,6 +365,7 @@ h2 {
     position: relative;
     border-radius: 6px;
     border: 1px solid #333;
+    min-height: 190px; /* <-- THÊM DÒNG NÀY VÀO ĐÂY */
 }
 .timeline-title { font-size: 1.25rem; color: var(--tech-green); margin-bottom: 0.25rem; }
 .timeline-date { font-size: 0.9rem; color: #aaa; margin-bottom: 0.75rem; font-style: italic; }
